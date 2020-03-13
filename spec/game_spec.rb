@@ -8,13 +8,14 @@ RSpec.describe Game do
     game.play
 
     expect(stdout.string).to include <<~GRID
-       __ __ __
-      |  |  |  |
-      |__|__|__|
-      |  |  |  |
-      |__|__|__|
-      |  |  |  |
-      |__|__|__|
+         1  2  3
+         __ __ __
+      A |  |  |  |
+        |__|__|__|
+      B |  |  |  |
+        |__|__|__|
+      C |  |  |  |
+        |__|__|__|
     GRID
   end
 end
