@@ -1,3 +1,3 @@
 require_relative "lib/game"
 
-Game.new(output: $stdout).play
+Game.new(input: $stdin, output: $stdout).play
