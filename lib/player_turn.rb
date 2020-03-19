@@ -1,36 +1,24 @@
-require_relative "coordinates"
-require_relative "null_coordinates"
+require_relative "text_view"
 
 class PlayerTurn
-  attr_reader :input, :view
+  attr_reader :player_input, :grid
 
-  def initialize(input:, view:)
-    @input = input
-    @view = view
+  def initialize(player_input:, grid:)
+    @player_input = player_input
+    @grid = grid
   end
 
-  def get_coordinates
-    until coordinates.valid?
-      get_and_validate_coordinates
-    end
-    coordinates.value
+  def take
+    mark_grid(get_player_coordinates)
   end
 
   private
 
-  def coordinates
-    @coordinates || NullCoordinates.new
+  def mark_grid(coordinates)
+    grid.mark(coordinates: coordinates, value: "X")
   end
 
-  def get_and_validate_coordinates
-    view.render_coordinates_prompt
-    get_input
-    unless coordinates.valid?
-      view.render_coordinates_error(coordinates)
-    end
-  end
-
-  def get_input
-    @coordinates = Coordinates.new(value: input.gets.chomp)
+  def get_player_coordinates
+    player_input.get_coordinates
   end
 end

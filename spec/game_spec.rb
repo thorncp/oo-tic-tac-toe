@@ -25,6 +25,14 @@ RSpec.describe Game do
       Invalid coordinates '3PO'
 
       Enter your move >
+         1  2  3
+         __ __ __
+      A |  |  |  |
+        |__|__|__|
+      B |  |  |  |
+        |__|__|__|
+      C |X |  |  |
+        |__|__|__|
     GRID
   end
 end

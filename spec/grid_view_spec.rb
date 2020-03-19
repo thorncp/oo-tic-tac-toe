@@ -1,9 +1,11 @@
+require_relative "../lib/grid"
 require_relative "../lib/grid_view"
 
 RSpec.describe GridView do
   it "renders a grid to output" do
     output = StringIO.new
-    view = described_class.new(output: output)
+    grid = Grid.new("B2" => "X", "C3" => "O")
+    view = GridView.new(grid: grid, output: output)
 
     view.render
 
@@ -12,9 +14,9 @@ RSpec.describe GridView do
          __ __ __
       A |  |  |  |
         |__|__|__|
-      B |  |  |  |
+      B |  |X |  |
         |__|__|__|
-      C |  |  |  |
+      C |  |  |O |
         |__|__|__|
     GRID
   end
