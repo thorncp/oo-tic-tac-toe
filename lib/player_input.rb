@@ -2,9 +2,10 @@ require_relative "coordinates"
 require_relative "null_coordinates"
 
 class PlayerInput
-  attr_reader :input, :view
+  attr_reader :input, :grid, :view
 
-  def initialize(input:, view:)
+  def initialize(input:, grid:, view:)
+    @grid = grid
     @input = input
     @view = view
   end
@@ -31,6 +32,6 @@ class PlayerInput
   end
 
   def get_input
-    @coordinates = Coordinates.new(value: input.gets.chomp)
+    @coordinates = Coordinates.new(grid: grid, value: input.gets.chomp)
   end
 end

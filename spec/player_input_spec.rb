@@ -8,7 +8,8 @@ RSpec.describe PlayerInput do
         render_coordinates_prompt: nil,
         render_coordinates_error: nil
       )
-      player_turn = PlayerInput.new(input: input, view: mock_view)
+      grid = Grid.new
+      player_turn = PlayerInput.new(input: input, grid: grid, view: mock_view)
       allow(input).to receive(:gets).and_return("A1")
 
       result = player_turn.get_coordinates
@@ -22,7 +23,8 @@ RSpec.describe PlayerInput do
         render_coordinates_prompt: nil,
         render_coordinates_error: nil
       )
-      player_turn = PlayerInput.new(input: input, view: mock_view)
+      grid = Grid.new
+      player_turn = PlayerInput.new(input: input, grid: grid, view: mock_view)
       allow(input).to receive(:gets).and_return("A0", "A4", "A1")
 
       player_turn.get_coordinates

@@ -16,4 +16,11 @@ class TextView
 
     ERROR
   end
+
+  def render_computer_thinking
+    output.puts(<<~BRAINS)
+
+      Thinking...
+    BRAINS
+  end
 end

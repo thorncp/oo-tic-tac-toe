@@ -1,5 +1,3 @@
-require_relative "coordinates"
-
 class GridView
   attr_reader :grid, :output
 

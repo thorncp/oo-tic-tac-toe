@@ -1,3 +1,4 @@
+require_relative "computer_turn"
 require_relative "grid"
 require_relative "grid_view"
 require_relative "player_input"
@@ -15,6 +16,8 @@ class Game
     grid_view.render
     player_turn.take
     grid_view.render
+    computer_turn.take
+    grid_view.render
   end
 
   private
@@ -26,7 +29,11 @@ class Game
   end
 
   def player_input
-    PlayerInput.new(input: input, view: text_view)
+    PlayerInput.new(input: input, grid: grid, view: text_view)
+  end
+
+  def computer_turn
+    ComputerTurn.new(grid: grid, view: text_view)
   end
 
   def grid_view

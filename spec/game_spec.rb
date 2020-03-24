@@ -2,6 +2,7 @@ require_relative "../lib/game"
 
 RSpec.describe Game do
   it "prints a grid" do
+    srand(0)
     stdin = StringIO.new
     stdout = StringIO.new
     game = Game.new(input: stdin, output: stdout)
@@ -30,6 +31,17 @@ RSpec.describe Game do
       A |  |  |  |
         |__|__|__|
       B |  |  |  |
+        |__|__|__|
+      C |X |  |  |
+        |__|__|__|
+
+      Thinking...
+
+         1  2  3
+         __ __ __
+      A |  |  |  |
+        |__|__|__|
+      B |  |O |  |
         |__|__|__|
       C |X |  |  |
         |__|__|__|

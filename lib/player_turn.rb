@@ -15,7 +15,7 @@ class PlayerTurn
   private
 
   def mark_grid(coordinates)
-    grid.mark(coordinates: coordinates, value: "X")
+    grid.mark_player(coordinates: coordinates)
   end
 
   def get_player_coordinates
