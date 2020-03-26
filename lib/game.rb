@@ -6,10 +6,10 @@ require_relative "player_turn"
 require_relative "text_view"
 
 class Game
-  def initialize(input:, output:)
+  def initialize(input:, output:, grid: Grid.new)
     @input = input
     @output = output
-    @grid = Grid.new
+    @grid = grid
   end
 
   def play
