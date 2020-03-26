@@ -23,4 +23,11 @@ class TextView
       Thinking...
     BRAINS
   end
+
+  def render_game_over
+    output.puts(<<~GG)
+
+      Game Over!
+    GG
+  end
 end

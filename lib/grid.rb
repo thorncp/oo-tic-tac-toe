@@ -9,6 +9,10 @@ class Grid
     @cells = cells
   end
 
+  def full?
+    cells.size == valid_coordinates.size
+  end
+
   def mark_computer(coordinates:)
     cells[coordinates] = "O"
   end
@@ -26,7 +30,7 @@ class Grid
   end
 
   def valid_coordinates?(coordinates)
-    valid_coordinates.include?(coordinates)
+    coordinates_in_grid?(coordinates) && coordinates_unmarked?(coordinates)
   end
 
   private
@@ -37,5 +41,13 @@ class Grid
 
   def valid_coordinates
     self.class.valid_coordinates
+  end
+
+  def coordinates_in_grid?(coordinates)
+    valid_coordinates.include?(coordinates)
+  end
+
+  def coordinates_unmarked?(coordinates)
+    available_coordinates.include?(coordinates)
   end
 end

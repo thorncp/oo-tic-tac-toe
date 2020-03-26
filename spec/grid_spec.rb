@@ -1,6 +1,36 @@
 require_relative "../lib/grid"
 
 RSpec.describe Grid do
+  describe "#full?" do
+    it "is true when all coordinates are marked" do
+      grid = Grid.new(
+        "A1" => "X",
+        "A2" => "X",
+        "A3" => "X",
+        "B1" => "O",
+        "B2" => "O",
+        "B3" => "O",
+        "C1" => "X",
+        "C2" => "X",
+        "C3" => "X"
+      )
+
+      expect(grid).to be_full
+    end
+
+    it "is false when no coordinates are marked" do
+      grid = Grid.new
+
+      expect(grid).not_to be_full
+    end
+
+    it "is false when some coordinates are marked" do
+      grid = Grid.new("A1" => "X", "B2" => "O")
+
+      expect(grid).not_to be_full
+    end
+  end
+
   describe "#mark_computer" do
     it "assigns O to the given coordinates" do
       grid = Grid.new
@@ -67,6 +97,20 @@ RSpec.describe Grid do
 
     it "is false when the the coordinates don't match the pattern" do
       expect(Grid.new.valid_coordinates?("@1")).to be false
+    end
+
+    it "is false when the coordinates are already marked by the player" do
+      grid = Grid.new
+      grid.mark_player(coordinates: "B2")
+
+      expect(grid.valid_coordinates?("B2")).to be false
+    end
+
+    it "is false when the coordinates are already marked by the player" do
+      grid = Grid.new
+      grid.mark_computer(coordinates: "C2")
+
+      expect(grid.valid_coordinates?("C2")).to be false
     end
   end
 

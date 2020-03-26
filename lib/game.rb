@@ -13,16 +13,40 @@ class Game
   end
 
   def play
-    grid_view.render
-    player_turn.take
-    grid_view.render
-    computer_turn.take
-    grid_view.render
+    introduce_the_game
+    play_to_completion
+    bid_farewell
   end
 
   private
 
   attr_reader :grid, :input, :output
+
+  def introduce_the_game
+    grid_view.render
+  end
+
+  def play_to_completion
+    until grid.full?
+      take_player_turn
+      take_computer_turn
+    end
+  end
+
+  def take_player_turn
+    player_turn.take
+    grid_view.render
+  end
+
+  def take_computer_turn
+    return if grid.full?
+    computer_turn.take
+    grid_view.render
+  end
+
+  def bid_farewell
+    text_view.render_game_over
+  end
 
   def player_turn
     PlayerTurn.new(player_input: player_input, grid: grid)
