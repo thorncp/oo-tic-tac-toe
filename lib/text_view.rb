@@ -24,10 +24,24 @@ class TextView
     BRAINS
   end
 
-  def render_game_over
+  def render_computer_won
     output.puts(<<~GG)
 
-      Game Over!
+      Game Over - You lost 🙁
+    GG
+  end
+
+  def render_player_won
+    output.puts(<<~GG)
+
+      Game Over - You won 😁
+    GG
+  end
+
+  def render_tie
+    output.puts(<<~GG)
+
+      Game Over - It's a tie 😐
     GG
   end
 end

@@ -1,8 +1,12 @@
 require_relative "computer_turn"
+require_relative "computer_won"
+require_relative "game_status"
+require_relative "game_tied"
 require_relative "grid"
 require_relative "grid_view"
 require_relative "player_input"
 require_relative "player_turn"
+require_relative "player_won"
 require_relative "text_view"
 
 class Game
@@ -27,7 +31,7 @@ class Game
   end
 
   def play_to_completion
-    until grid.full?
+    until status.game_over?
       take_player_turn
       take_computer_turn
     end
@@ -39,13 +43,13 @@ class Game
   end
 
   def take_computer_turn
-    return if grid.full?
+    return if status.game_over?
     computer_turn.take
     grid_view.render
   end
 
   def bid_farewell
-    text_view.render_game_over
+    end_games.find(&:current?).render
   end
 
   def player_turn
@@ -66,5 +70,17 @@ class Game
 
   def text_view
     TextView.new(output: output)
+  end
+
+  def end_games
+    [
+      ComputerWon.new(status: status, text_view: text_view),
+      GameTied.new(status: status, text_view: text_view),
+      PlayerWon.new(status: status, text_view: text_view)
+    ]
+  end
+
+  def status
+    GameStatus.new(grid: grid)
   end
 end

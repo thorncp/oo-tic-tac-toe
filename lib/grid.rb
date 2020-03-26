@@ -13,6 +13,14 @@ class Grid
     cells.size == valid_coordinates.size
   end
 
+  def computer_coordinates
+    cells.select { |_, value| value == "O" }.keys
+  end
+
+  def player_coordinates
+    cells.select { |_, value| value == "X" }.keys
+  end
+
   def mark_computer(coordinates:)
     cells[coordinates] = "O"
   end
