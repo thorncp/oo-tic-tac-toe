@@ -27,21 +27,21 @@ class TextView
   def render_computer_won
     output.puts(<<~GG)
 
-      Game Over - You lost 🙁
+      Game Over - You lost :(
     GG
   end
 
   def render_player_won
     output.puts(<<~GG)
 
-      Game Over - You won 😁
+      Game Over - You won :)
     GG
   end
 
   def render_tie
     output.puts(<<~GG)
 
-      Game Over - It's a tie 😐
+      Game Over - It's a tie :|
     GG
   end
 end

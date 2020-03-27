@@ -100,7 +100,7 @@ RSpec.describe Game do
 
     game.play
 
-    expect(stdout.string).to include "Game Over - You won 😁"
+    expect(stdout.string).to include "Game Over - You won :)"
   end
 
   it "prints game over when the computer wins" do
@@ -115,7 +115,7 @@ RSpec.describe Game do
 
     game.play
 
-    expect(stdout.string).to include "Game Over - You lost 🙁"
+    expect(stdout.string).to include "Game Over - You lost :("
   end
 
   it "prints game over when the grid is full" do
@@ -130,6 +130,6 @@ RSpec.describe Game do
 
     game.play
 
-    expect(stdout.string).to include "Game Over - It's a tie 😐"
+    expect(stdout.string).to include "Game Over - It's a tie :|"
   end
 end
